@@ -1,6 +1,9 @@
 <?php
-$url="http://my.mobirise.com/data/userpic/764.jpg";//je me tate a télécharger l'image...
+$url="<img src=img/chihuahua.jpg>";
 $n=1;
-function repeterImage($url,$n){
 
+function repeterImage($url,$n){
+    echo str_repeat($url,$n);
 }
+repeterImage($url,4);
+?>
