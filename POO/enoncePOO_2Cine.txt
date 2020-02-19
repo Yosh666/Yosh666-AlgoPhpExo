@@ -1,0 +1,15 @@
+*** GESTION DE FILMS ***
+
+Film : titre film, année de sortie, durée (en min), synopsis, réalisateur (1 seul réalisateur par film)
+Realisateur : nom, prenom, date de naissance
+Acteur : nom, prenom, date de naissance
+Role : nom du rôle
+Genre : nom du genre
+
+On doit pouvoir afficher :
+- tous les films d'un réalisateur
+- tous les films d'un acteur (film + nom du rôle)
+- toutes les informations d'un film (titre, année, durée en HH:MM, genre, liste des acteurs (nom + prénom), réalisateur (nom + prénom))
+- la liste des rôles d'un acteur (nom du rôle et titre du film)
+- la liste des acteurs ayant incarné un rôle précis (nom + prénom de l'acteur et film dans lequel le rôle a été incarné)
+- tous les films d'un genre précis
