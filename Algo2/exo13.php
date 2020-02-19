@@ -51,7 +51,7 @@ class Voiture{
     }
 
     public function __toString(){
-        echo "véhicule ".$this->_modele." ".$this->_marque;
+        return "véhicule ".$this->_marque." ".$this->_modele;
         
     }
     public function demarrer(){
@@ -60,13 +60,14 @@ class Voiture{
         }
         else{
             $this->_etat=true;
+            echo "Le $this démarre<br>";
         }
     }
     public function stopper(){
         if ($this->_etat){
             $this->_etat=false;
             $this->_vitesseActuelle=0;
-            echo "Le $this est stoppé";//corriger en tostring
+            echo "Le $this est stoppé<br>";//corriger en tostring
         }
         else{
             echo "Le $this est déja éteinte bourrinus<br>";
@@ -82,7 +83,8 @@ class Voiture{
             echo "Faut appuyer sur le champignon hein<br>";
         }
         else{
-            echo "Pour accélérer, il faut démarrer le $this<br>";
+            echo "Le $this veut accélerer de $Acceleration km/h<br>
+            Pour accélérer, il faut démarrer le $this<br>";
         }
 
         
@@ -95,6 +97,8 @@ class Voiture{
         }
         else if  ($this->_etat && $this->_vitesseActuelle<$Deceleration){
             echo "Commande impossible bourrinus<br>";
+            $this->_vitesseActuelle=0;
+            echo "La vitesse du  $this  est de: ".$this->_vitesseActuelle." km/h<br>";
         }
         else {
             echo "Pour ralentir faudrait déja que la voiture roule <br>";
@@ -102,7 +106,7 @@ class Voiture{
     }
 
     public function infos(){
-        echo " InFormation du véhicule <br>
+        echo "<br> InFormation du véhicule <br>
             *****************<br>
             Nom et modéle du véhicule: ".$this->_marque." ".$this->_modele. "<br>
             Nombre de portes : ".$this->_nbPortes. "<br>";
@@ -117,3 +121,20 @@ class Voiture{
     }
 
 }
+/*construct($Marque,$Modele,$NbPortes)<-ce sont les infos nécesserais a une instanciation!*/
+$v1=new Voiture('Peugeot','408',5);
+$v2=new Voiture('Citroën','C4',3);
+$v1->infos();
+$v2->infos();
+
+//fonction demarrer ;stopper;accelerer;ralentir
+$v1->demarrer();
+$v1->accelerer (50);
+$v2->stopper();
+$v2->demarrer();
+$v2->stopper();
+$v2->accelerer(20);
+$v1->ralentir(20);
+$v1->ralentir(60);
+
+?>
