@@ -61,18 +61,27 @@ class Titulaire{
         $this->compte=$compte
     }*/
     public function getAge(){
-        $Birth=new DateTime(strtotime($this->_dateNaissance));
+        
+        $Birth=new DateTime($this->_dateNaissance);
+        
         $today= new DateTime();
         $age=$Birth->diff($today);
-        $age-> format('%y');
+        $age-> format('%y ans');
         return $age;
+        
+
+        
+
     }
     public function infosDuTitulaire(){
         return $this->_prenom." ".$this->_nom." <br>"
-                .$age." ans <br>
-                Secteur: ".$ville."<br>";
+                .$this->age." ans <br>
+                Secteur: ".$this->_ville."<br>";
                 
     }
 }
 //construct ($nom,$prenom,$dateNaissance,$ville
-$p1=new Titulaire('Juventus','Turin','1962-02-15','Clermont');
+$p1=new Titulaire('Juventus','Turin','1983-02-15','Clermont');
+$p1-> getAge();
+
+
