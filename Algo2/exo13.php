@@ -121,7 +121,7 @@ class Voiture{
     }
 
 }
-/*construct($Marque,$Modele,$NbPortes)<-ce sont les infos nécesserais a une instanciation!*/
+/*construct($Marque,$Modele,$NbPortes)<-ce sont les infos nécessaires a une instanciation! appelé attribut*/
 $v1=new Voiture('Peugeot','408',5);
 $v2=new Voiture('Citroën','C4',3);
 $v1->infos();

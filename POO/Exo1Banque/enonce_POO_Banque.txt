@@ -1,4 +1,4 @@
-*** GESTION DE COMPTES BANCAIRES ***
+﻿*** GESTION DE COMPTES BANCAIRES ***
 En orienté objet !
 
 Un compte bancaire est identifié par :
@@ -13,6 +13,11 @@ Un titulaire est identifié par :
 - une date de naissance
 - une ville
 - l'ensemble de ses comptes bancaires
+
+Sur un compte bancaire, on doit pouvoir :
+- crediter le compte de X euros
+- debiter le compte de X euros
+- effectuer un virement d'un compte à l'autre
 
 On doit pouvoir :
 - Afficher toutes les informations d'un(e) titulaire (dont l'âge) et l'ensemble des comptes appartenant à celui(celle)-ci

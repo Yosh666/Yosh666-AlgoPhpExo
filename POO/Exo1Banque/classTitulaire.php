@@ -20,15 +20,15 @@ class Titulaire{
     private $_prenom;
     private $_dateNaissance;
     private $_ville;
-    /*private $_compte; a utiliser quand on saura comment faire*/
+    private $_compte; /*a utiliser quand on saura comment faire*/
     
 
-    public function __construct ($nom,$prenom,$dateNaissance,$ville/*,$compte*/){
+    public function __construct ($nom,$prenom,$dateNaissance,$ville){
         $this->_nom=$nom;
         $this->_prenom=$prenom;
-        $this->_dateNaissance=$dateNaissance;
+        $this->_dateNaissance=new DateTime($dateNaissance) ;
         $this->_ville=$ville;
-        /*$this->compte=$compte;*/
+        $this->_compte=[];
     }
     public function getNom(){
         return $this->_nom;
@@ -42,9 +42,9 @@ class Titulaire{
     public function getVille(){
         return $this->_ville;
     }
-    /*public function getCompte(){
-        return $this->_compte;
-    }*/
+    public function getCompte(Compte $cbancaire){
+        return $this->_compte;//créer une fonction dans compte bancaire pour charger les données dans un tableau;
+    }
     public function setNom($nom){
         $this->_nom=$nom;
     }
@@ -61,13 +61,11 @@ class Titulaire{
         $this->compte=$compte
     }*/
     public function getAge(){
-        
-        $Birth=new DateTime($this->_dateNaissance);
-        
-        $today= new DateTime();
-        $age=$Birth->diff($today);
-        $age-> format('%y ans');
-        return $age;
+        $now = new DateTime(); 
+		$interval = $this->_dateNaissance->diff($now); 
+
+		$age = $interval->format('%y'); 
+		return $age; 
         
 
         
@@ -75,13 +73,13 @@ class Titulaire{
     }
     public function infosDuTitulaire(){
         return $this->_prenom." ".$this->_nom." <br>"
-                .$this->age." ans <br>
-                Secteur: ".$this->_ville."<br>";
+                .$this->getAge()." ans <br>
+                Secteur: ".$this->_ville."<br>";/*on peut appeler une méthode directement dans une autre méthode
+                sinon il aurait fallu que je rentre la variable age dans le construct*/
                 
     }
 }
-//construct ($nom,$prenom,$dateNaissance,$ville
-$p1=new Titulaire('Juventus','Turin','1983-02-15','Clermont');
- echo $p1->getAge();
+//pour voir le rséultat allez dans index
+
 
 
