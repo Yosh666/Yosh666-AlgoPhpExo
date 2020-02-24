@@ -1,5 +1,5 @@
 <?php
-class Voiture{
+class Voiture{//normalement une classe=un fichier
     private $_marque;
     private $_modele;
     public function __construct($Marque,$Modele){

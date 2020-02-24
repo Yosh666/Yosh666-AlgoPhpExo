@@ -82,6 +82,6 @@ class Titulaire{
 }
 //construct ($nom,$prenom,$dateNaissance,$ville
 $p1=new Titulaire('Juventus','Turin','1983-02-15','Clermont');
-$p1-> getAge();
+ echo $p1->getAge();
 
 

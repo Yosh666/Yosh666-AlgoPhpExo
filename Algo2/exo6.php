@@ -1,11 +1,12 @@
 <?php
 $elements=["Monsieur","Madame","Xgluglu"];
 function alimenterListeDeroulante ($elements){
-    echo "<select>";
+    $resultat= "<select>";
     foreach ($elements as $option){
-        echo "<option value='option1'>".$option. "</option>";
+        $resultat.= "<option value= '$option'>$option</option>";//.= force à la concaténation des variables 
     }
-    echo "</select>";
+    $resultat="</select>";
+    return $resultat;
 }
-alimenterListeDeroulante($elements);
+echo alimenterListeDeroulante($elements);
 ?>

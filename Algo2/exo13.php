@@ -73,7 +73,7 @@ class Voiture{
             echo "Le $this est déja éteinte bourrinus<br>";
         }
     }
-    public function accelerer($Acceleration){
+    public function accelerer($Acceleration){//le truc entre parenthéses dans les fonctions s'appelle un argument
         if ($this->_etat && $Acceleration>0){
             $this->_vitesseActuelle += $Acceleration;
             echo "Le $this accélere de: $Acceleration km/h<br>
