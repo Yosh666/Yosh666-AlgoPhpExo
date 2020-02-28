@@ -48,7 +48,13 @@ class Film{
     public function setDuree($duree){
         $this->_duree=$duree;
     }
-
+    public function setSynopsis($synopsis){
+        $this->_synopsis=$synopsis;
+    }
+    public function dureeHeure($duree){
+        //a voir comment faire la durée en heure
+    }
+    
 
 
 
