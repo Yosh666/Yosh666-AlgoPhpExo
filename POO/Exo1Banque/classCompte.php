@@ -4,12 +4,14 @@ class Compte{
     private $_soldeinitial;
     private $_devise;
     private $_titulaire;
+    
 
         public function __construct(Titulaire $titulaire,$libelle,$soldeinitial,$devise){
             $this->_titulaire=$titulaire;
             $this->_libelle=$libelle;
             $this->_soldeinitial= $soldeinitial;
             $this->_devise = $devise;
+            $titulaire->addCompte($this);
         }
         public function getLibelle(){
             return $this->_libelle;
@@ -54,7 +56,7 @@ class Compte{
             $this->debiter($montant);
             echo $compte->crediter($montant);
             return "vous avez fait un transfert de $montant $this->_devise 
-                votre  $this->_libelle est à un solde de : $this->_soldeinitial";
+                votre  $this->_libelle est à un solde de : $this->_soldeinitial.<br>";
                 
 
         }

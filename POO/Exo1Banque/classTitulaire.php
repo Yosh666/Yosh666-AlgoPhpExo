@@ -42,7 +42,7 @@ class Titulaire{
     public function getVille(){
         return $this->_ville;
     }
-    public function getCompte(Compte $cbancaire){
+    public function getCompte(){
         return $this->_compte;//créer une fonction dans compte bancaire pour charger les données dans un tableau;
     }
     public function setNom($nom){
@@ -71,13 +71,24 @@ class Titulaire{
         
 
     }
-    public function infosDuTitulaire(){
-        return $this->_prenom." ".$this->_nom." <br>"
-                .$this->getAge()." ans <br>
-                Secteur: ".$this->_ville."<br>";/*on peut appeler une méthode directement dans une autre méthode
+    public function addCompte(Compte $compte) {//on prévient qu'on a un objet compte et on le push dans un tableau
+        array_push($this->_compte, $compte);
+    }
+    public function infosDuTitulaire(){/*on peut appeler une méthode directement dans une autre méthode
                 sinon il aurait fallu que je rentre la variable age dans le construct*/
+    
+        $result= $this->_prenom." ".$this->_nom." <br>"
+                .$this->getAge()." ans <br>
+                Secteur: ".$this->_ville."<br> 
+                <table style='border: 1px solid black'> <tr> <th>Libéllé</th> <th>Solde</th> <th>Devise</th></tr>";
+        foreach ($this->_compte as $key => $value){
+            $result.= "<tr><td>".$value->getLibelle()."</td><td>".$value->getSoldeInitial()."</td><td>".$value->getDevise()."</td></tr>";
+        }
+        $result.= "</table>";
+        return $result;
                 
     }
+    /*__construct(Titulaire $titulaire,$libelle,$soldeinitial,$devise){*/
 }
 //pour voir le rséultat allez dans index
 
