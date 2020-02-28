@@ -5,6 +5,7 @@ include('classActeur.php');
 include('classGenre.php');
 include('classRole.php');
 include('classFilm.php');
+include ('classCasting.php');
 $real1=new Realisateur("Juvet","Andrey",'1983-02-14');
 $gore= new Genre("Horreur");
 $film1= new Film('Titanic','1994',$real1,$gore,125,"Parfois dans l'eau on s'ennuie");
