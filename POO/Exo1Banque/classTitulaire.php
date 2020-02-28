@@ -82,7 +82,9 @@ class Titulaire{
                 Secteur: ".$this->_ville."<br> 
                 <table style='border: 1px solid black'> <tr> <th>Libéllé</th> <th>Solde</th> <th>Devise</th></tr>";
         foreach ($this->_compte as $key => $value){
-            $result.= "<tr><td>".$value->getLibelle()."</td><td>".$value->getSoldeInitial()."</td><td>".$value->getDevise()."</td></tr>";
+            $result.= "<tr><td>".$value->getLibelle()."</td>
+                        <td>".$value->getSoldeInitial()."</td>
+                        <td>".$value->getDevise()."</td></tr>";
         }
         $result.= "</table>";
         return $result;

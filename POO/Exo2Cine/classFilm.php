@@ -5,6 +5,7 @@ réalisateur (1 seul réalisateur par film)
 genre
 durée (en min),qui doit passer en format heure!
 synopsis, 
+
 */
 class Film{
     private $_titre;
@@ -32,11 +33,17 @@ class Film{
     public function getSortie(){
         return $this->_sortie;
     }
+    public function getRealisateur(){
+        return $this->_realisateur;
+    }
     public function getDuree(){
         return $this->_duree;
     }
     public function getSynopsis(){
         return $this->_synopsis;
+    }
+    public function getGenre(){
+        return $this->_genre;
     }
 
     public function setTitre($titre){
@@ -51,12 +58,20 @@ class Film{
     public function setSynopsis($synopsis){
         $this->_synopsis=$synopsis;
     }
-    public function dureeHeure($duree){
+    public function dureeHeure(){
+        $dureeheure= date('H:i', mktime(0,$this->_duree));
+        return $dureeheure;
         //a voir comment faire la durée en heure
     }
-    
+    /*strftime( "%H H %M mn %S s", $duree * 60 )*/
+    /*echo date('H:i', mktime(0, 97)); // 01:37*/
 
-
+    public function infoFilm(){
+        return "Le film :".$this->_titre." sorti en ".$this->_sortie. 
+            " tourné par ".$this->getRealisateur()->getPrenom()." ".$this->getRealisateur()->getNom(). "
+             avec un genre ".$this->getGenre()->getStyle()." pour une durée de : ".$this->dureeHeure().
+             " heure et  raconte l'histoire de :".$this->_synopsis." .<br>";
+    }
 
 
 

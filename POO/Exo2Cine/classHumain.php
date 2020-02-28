@@ -39,7 +39,7 @@ class Humain{
     }
     public function __toString()
     {
-        return $this->_prenom.' '.$this->_nom.' '.$this->getAge()." ans";
+        return $this->_prenom.' '.$this->_nom.' '.$this->getAge()." ans<br>";
     }
 
 }

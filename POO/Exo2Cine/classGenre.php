@@ -21,23 +21,22 @@ class Genre{
     }
     /*($titre,$sortie,Realisateur $realisateur, Genre $genre,$duree,$synopsis)*/
     public function infoGenre(){
-        $result= "Le genre ".$this->_style. "se retrouve dans les films:<br>";
+        $result= "Le genre ".$this->_style. " se retrouve dans les films:<br>";
         $result.="<table style='border: 1px solid black'><tr>
             <th>Titre</th>
             <th>Date de Sortie</th>
             <th> Réalisateur </th>
             <th> Durée</th>
             <th>Synopsis</th></tr>";
-        foreach ($this->_film as $key=> $value){
-            $result .="<tr><td>".$value->getTitre()."</td>
-                    <td>".$value->getSortie()."</td>
-                    <td>".$value->getPrenom()." ".$value->getNom()."</td>
-                    <td>".$value->dureeHeure()."</td>
-                    <td>".$value->getSynopsis()."</td></tr>";                    
+        foreach ($this->_film as $film){
+            $result .="<tr ><td style='border: 1px solid black'>".$film->getTitre()."</td>
+                    <td style='border: 1px solid black'>".$film->getSortie()."</td>
+                    <td style='border: 1px solid black'>".$film->getRealisateur()->getPrenom()." ".$film->getRealisateur()->getNom()."</td>
+                    <td style='border: 1px solid black'>".$film->dureeHeure()." heure </td>
+                    <td style='border: 1px solid black'>".$film->getSynopsis()."</td></tr>";                    
         }
-        $result .="</table>";
-        return $result;
-        
+        $result .="</table><br>";
+        return $result;       
 
 
     }
