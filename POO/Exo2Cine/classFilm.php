@@ -14,6 +14,7 @@ class Film{
     private $_genre;
     private $_duree;
     private $_synopsis;
+    private $_casting;
     
     
     public function __construct($titre,$sortie,Realisateur $realisateur, Genre $genre,$duree,$synopsis){
@@ -23,6 +24,7 @@ class Film{
         $this->_genre=$genre;
         $this->_duree=$duree;
         $this->_synopsis=$synopsis;
+        $this->_casting=[];
 
         $realisateur->addFilm($this);
         $genre->addFilm($this);
@@ -63,8 +65,10 @@ class Film{
         return $dureeheure;
         //a voir comment faire la durée en heure
     }
-    /*strftime( "%H H %M mn %S s", $duree * 60 )*/
     /*echo date('H:i', mktime(0, 97)); // 01:37*/
+    public function addCasting(Casting $casting){
+        array_push($this->_casting,$casting);
+    }
 
     public function infoFilm(){
         return "Le film :".$this->_titre." sorti en ".$this->_sortie. 
@@ -72,18 +76,4 @@ class Film{
              avec un genre ".$this->getGenre()->getStyle()." pour une durée de : ".$this->dureeHeure().
              " heure et  raconte l'histoire de :".$this->_synopsis." .<br>";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

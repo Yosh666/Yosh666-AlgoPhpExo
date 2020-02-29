@@ -36,9 +36,7 @@ class Genre{
                     <td style='border: 1px solid black'>".$film->getSynopsis()."</td></tr>";                    
         }
         $result .="</table><br>";
-        return $result;       
-
-
+        return $result;     
     }
           
     

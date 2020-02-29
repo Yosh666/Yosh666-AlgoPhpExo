@@ -32,8 +32,4 @@ class Realisateur extends Humain{
         return $result;
     }
 
-
-
-
-
 }
