@@ -1,0 +1,23 @@
+tout les perso ont 
+-un nom
+-
+-un age reflechir a un bonus/malus se lon l'age pr les guerrier et les magos
+
+les magiciens ont
+du mana (60)
+-pv 100
+-une force de frappe de 5
+-un sort de frappe de 30(20pts de mana )
+-besoinde se recharger a 10
+
+Les guerrier ont
+une force de frappe de 10
+des pv a 120
+
+Les nains ont 
+une force de frappe 5
+des pv a 200
+le pouvoir berserk +2 a chaque frappe arrivé a 12 coup puissant a 45 degats
+
+on va laisser tout ce petit monde se taper dessus et essayer de mettre des effets de style et insérer des images tout ça tout ça....
+
