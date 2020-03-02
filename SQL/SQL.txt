@@ -1,0 +1,148 @@
+requêtes 1:
+ 	SELECT NOM_LIEU, COUNT(*) (pensez a coller la parenthése à count)
+	FROM lieu l, villageois v
+	WHERE l.ID_LIEU =v.ID_LIEU (ici on a opéré une jointure)
+	GROUP BY NOM_LIEU (a chak fois kil ya un count faudra fr un group by)
+	ORDER BY COUNT(*) DESC (version possible)
+
+version finale:
+	SELECT NOM_LIEU, COUNT(*) AS nbGaulois (mettre un alias au count)
+	FROM lieu l, villageois v
+	WHERE l.ID_LIEU =v.ID_LIEU
+	GROUP BY NOM_LIEU
+	ORDER BY nbGaulois DESC
+
+
+
+requete 2:
+	SELECT NOM,NOM_SPECIALITE,NOM_LIEU
+	FROM villageois v, specialite s, lieu l
+	WHERE l.ID_LIEU =v.ID_LIEU
+	AND v.ID_SPECIALITE=s.ID_SPECIALITE
+
+requete 3:
+	SELECT NOM_SPECIALITE, COUNT(*) AS nbGaulois
+	FROM villageois v, specialite s
+	WHERE s.ID_SPECIALITE = v.ID_SPECIALITE
+	GROUP BY NOM_SPECIALITE
+	ORDER BY nbGaulois DESC
+
+requete 4:
+sans les dates:
+	SELECT NOM_BATAILLE,NOM_LIEU
+	FROM bataille b, lieu l
+	WHERE b.ID_LIEU=l.ID_LIEU
+	ORDER BY DATE_BATAILLE DESC 
+Avec les dates
+	
+	SELECT NOM_BATAILLE,NOM_LIEU,DATE_FORMAT(DATE_BATAILLE,"%d %c %Y") AS jourDeBaston
+	FROM bataille b, lieu l
+	WHERE b.ID_LIEU=l.ID_LIEU
+	ORDER BY DATE_BATAILLE  DESC
+
+Requete 5:
+	SELECT NOM_POTION,SUM(COUT_INGREDIENT*QTE) AS prixFabrication
+	FROM potion p, compose c , ingredient i
+	WHERE p.ID_POTION= c.ID_POTION
+	AND i.ID_INGREDIENT=c.ID_INGREDIENT
+	GROUP BY NOM_POTION
+	ORDER BY prixFabrication DESC 
+
+
+Requete 6:
+
+	SELECT NOM_INGREDIENT, COUT_INGREDIENT*QTE AS prixFabrication,QTE
+	FROM potion p, compose c , ingredient i
+	WHERE p.ID_POTION= c.ID_POTION
+	AND i.ID_INGREDIENT=c.ID_INGREDIENT
+	AND NOM_POTION="POTION V"
+
+
+Requete 7:
+
+	SELECT NOM, SUM(QTE) 
+	FROM villageois v,bataille b, prise_casque p
+	WHERE v.ID_VILLAGEOIS=p.ID_VILLAGEOIS
+	AND b.ID_BATAILLE=p.ID_BATAILLE
+	AND NOM_BATAILLE='Babaorum'
+	GROUP BY v.ID_VILLAGEOIS
+	HAVING SUM(QTE) >= ALL( /*quand on est tenté de faire un where SUM() ou where COUNT()
+		SELECT SUM(QTE)
+		FROM bataille b, prise_casque p
+		WHERE b.ID_BATAILLE=p.ID_BATAILLE
+		AND NOM_BATAILLE='Babaorum'
+		GROUP BY p.ID_VILLAGEOIS)
+
+
+
+Requete 8:
+	SELECT NOM, SUM(DOSE)AS qtepotion
+	FROM villageois v, potion p, boit b
+	WHERE v.ID_VILLAGEOIS=b.ID_VILLAGEOIS
+	AND p.ID_POTION=b.ID_POTION
+	GROUP BY NOM
+	ORDER BY qtepotion DESC 
+
+Requete 9: 
+	SELECT NOM_BATAILLE,SUM(QTE) AS cskpris
+	FROM bataille b, prise_casque pc
+	WHERE b.ID_BATAILLE=pc.ID_BATAILLE
+	GROUP BY NOM_BATAILLE
+	HAVING SUM(QTE)>= ALL(
+		SELECT SUM(QTE)
+		FROM  prise_casque pc
+		GROUP BY ID_BATAILLE)
+
+	
+Requete 10:
+	SELECT NOM_TYPE_CASQUE,COUNT(NOM_TYPE_CASQUE) AS typecsk,NOM_TYPE_CASQUE ,SUM(COUT_CASQUE)AS totalcask
+	FROM casque c, type_casque t
+	WHERE c.ID_TYPE_CASQUE =t.ID_TYPE_CASQUE
+	GROUP BY NOM_TYPE_CASQUE
+	ORDER BY totalcask DESC 
+
+Requete 11:
+	SELECT NOM_POTION
+	FROM potion p, ingredient i, compose c
+	WHERE p.ID_POTION= c.ID_POTION
+	AND i.ID_INGREDIENT= c.ID_INGREDIENT
+	AND NOM_INGREDIENT="Cerise"
+
+Requete 12:
+	SELECT NOM_LIEU, COUNT(*) 
+	FROM lieu l, villageois v
+	WHERE l.ID_LIEU=v.ID_LIEU
+	GROUP BY NOM_LIEU
+	HAVING COUNT(*)>=ALL(
+		SELECT COUNT(*)
+		FROM villageois v
+		GROUP BY ID_LIEU)
+		
+
+
+Requete 13:
+
+Requete 14:
+	SELECT NOM_LIEU
+	FROM lieu
+	WHERE NOM_LIEU LIKE '%um'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
