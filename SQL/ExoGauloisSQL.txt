@@ -123,14 +123,24 @@ Requete 12:
 Requete 13:
 13) Noms des villageois qui n'ont jamais bu de potion Averifier parce ke ça donne 0
 	SELECT NOM
-	FROM  boit b,villageois v
-	WHERE b.ID_VILLAGEOIS=v.ID_VILLAGEOIS
-	AND DOSE IS NULL
+	FROM  villageois v
+	WHERE v.ID_VILLAGEOIS NOT IN( //ne sont pas dans
+		SELECT b.ID_VILLAGEOIS
+		FROM boit b)
 
+
+
+	SELECT NOM
+	FROM  villageois v
+	WHERE !EXISTS ( //veut dire n'existe pas
+		SELECT dose
+		FROM boit b
+		WHERE v.ID_VILLAGEOIS= b.ID_VILLAGEOIS)
+	
 Requete 14:
 	SELECT NOM_LIEU
 	FROM lieu
-	WHERE NOM_LIEU LIKE '%um'
+	WHERE NOM_LIEU LIKE '%um%'
 
 Requete 15:
 15) Nom du / des villageois qui n'ont pas le droit de boire la potion 'Rajeunissement II'
@@ -139,7 +149,7 @@ Requete 15:
 	WHERE v.ID_VILLAGEOIS= can.ID_VILLAGEOIS
 	AND p.ID_POTION= can.ID_POTION
 	AND NOM_POTION= 'Rajeunissement II'
-	AND A_LE_DROIT IS NOT NULL
+	AND A_LE_DROIT =0;
 
 
 

@@ -4,12 +4,12 @@
      private $_nom;
      private $_prenom;
      private $_livre;
-    // private $_bibliographie;
+    
 
     public function __construct($nom,$prenom){
         $this->_nom=$nom;
         $this->_prenom=$prenom;
-        //$this->_bibliographie=[];
+       
         $this->_livre=[];
                 
     }
@@ -32,9 +32,7 @@
         $this->_prenom=$prenom;
     }
 
-   /* public function addBiblio(Bibliographie $bibliographie){
-        array_push($this->_bibliographie,$bibliographie);
-    }*/
+ 
     public function addLivre(Livre $livre){
         array_push($this->_livre,$livre);
     }
