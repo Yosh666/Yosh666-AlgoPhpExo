@@ -28,6 +28,7 @@ class Humain{
     }
     public function setDateNaissance ($dateNaissance){
         $this->_dateNaissance=$dateNaissance;
+        
     }
 
     public function getAge(){
