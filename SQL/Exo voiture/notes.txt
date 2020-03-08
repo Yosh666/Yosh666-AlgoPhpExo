@@ -1,0 +1,29 @@
+Celle-ci devra pouvoir stocker des véhicules identifiés par un numéro unique, une plaque
+d’immatriculation, une marque (ex : PEUGEOT), un modèle (ex : 5008), un nombre de portes, une
+origine (ex : Allemagne pour BMW, France pour PEUGEOT, etc.). Chaque véhicule pourra être d’une ou
+plusieurs couleurs et être d’une seule motorisation (Essence, Diesel, Hybride, …).
+
+vehicule
+	-id
+	-immat
+	-nb porte
+
+marque
+	-id
+	-marque
+
+modele
+	-id
+	-modele
+
+origine
+	-id
+	-pays
+
+couleur
+	-id
+	-couleur
+
+motorisation
+	-id
+	-moteur
