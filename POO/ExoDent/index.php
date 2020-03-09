@@ -11,5 +11,6 @@ echo $dr1-> infoDentiste();
 echo $p1->infoPatient();
 $con= new Consultation($p1,$dr1,'2019-05-23',"09:05");
 $con2=new Consultation($p1,$dr2, '2020-03-12',"08:15");
+$con3= new Consultation($p2,$dr1,'2020-15-02','15:15');
 echo $dr1->planningDentiste();
 echo $p1->planningPatient();

@@ -22,4 +22,8 @@ class Humain{
         $this->_prenom=$prenom;
     }
 
+    public function __toString(){
+        return $this->_prenom." ".strtoupper($this->_nom);
+    }
+
 }

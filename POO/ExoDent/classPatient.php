@@ -15,7 +15,7 @@
     }
     public function __toString()
     {
-        return 'patient: '.$this->_prenom.' '.strtoupper($this->_nom).'<br>';
+        return 'patient: '.$this->_prenom.' '.$this->_nom.'<br>';
     }
     public function infoPatient(){
         return $this;

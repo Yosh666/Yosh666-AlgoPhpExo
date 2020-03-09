@@ -13,12 +13,9 @@ class Dentiste extends Humain{
     public function getConsult(){
         return $this->_consultation;
     }
-    public function __toString()
-    {
-        return 'Dr '.$this->_prenom.' '.strtoupper($this->_nom).'<br>';
-    }
+   
     public function infoDentiste(){
-        return $this;
+        return "Dr ".$this."<br>";
     }
     public function planningDentiste(){
         $result= "Consultations du  $this : ";
@@ -29,7 +26,10 @@ class Dentiste extends Humain{
     }
 
 
-
+    public function __toString()
+    {
+        return 'Dr '.parent::__toString();
+    }
 
 
 
