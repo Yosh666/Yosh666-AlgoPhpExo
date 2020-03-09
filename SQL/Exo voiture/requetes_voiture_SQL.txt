@@ -1,0 +1,69 @@
+a. Lister les véhicules (plaque immatriculation + modèle + marque) de marque française
+	SELECT IMMAT,NOM_MODELE,NOM_MARQUE
+	FROM vehicule v,origine o, marque mark ,modele mo
+	WHERE v.ID_MODELE= mo.ID_MODELE
+	AND mo.ID_MARQUE=mark.ID_MARQUE
+	AND mark.ID_ORIGINE= o.ID_ORIGINE
+	AND NOM_PAYS="France"
+	ORDER BY NOM_MARQUE
+
+
+b. Nombre de véhicules par marque (trié par nombre de véhicules décroissant)
+	SELECT NOM_MARQUE, COUNT(ID_voiture) AS nbvoiture
+	FROM vehicule v , marque m, modele mo
+	WHERE m.ID_MARQUE=mo.ID_MARQUE
+	AND mo.ID_MODELE=v.ID_MODELE
+	GROUP BY NOM_MARQUE
+	ORDER BY nbvoiture DESC 
+
+
+c. Nombre de véhicules par motorisation (même tri que la 2)
+	SELECT TYPE_MOTEUR, COUNT(ID_voiture) AS nbvoiture
+	FROM vehicule v , motorisation m
+	WHERE v.ID_MOTEUR=m.ID_MOTEUR
+	GROUP BY TYPE_MOTEUR
+	ORDER BY nbvoiture DESC
+
+d. Nombre de véhicules de chaque nationalité (même tri que la 2)
+ 
+	SELECT NOM_PAYS, COUNT(*) AS nbvoiture
+	FROM vehicule v, origine o, marque ma, modele mo
+	WHERE o.ID_ORIGINE=ma.ID_ORIGINE
+	AND ma.ID_MARQUE=mo.ID_MARQUE
+	AND mo.ID_MODELE=v.ID_MODELE
+	GROUP BY NOM_PAYS
+	ORDER BY nbvoiture DESC
+
+e. Lister les véhicules de couleur grises ET rouge
+	SELECT DISTINCT IMMAT
+	FROM vehicule v, couleurs c, colorer co
+	WHERE v.ID_VOITURE=co.ID_VOITURE
+	AND co.ID_COULEUR=c.ID_COULEUR
+	AND COULEUR="blanc"
+	AND IMMAT IN(
+		SELECT DISTINCT IMMAT
+		FROM vehicule v, couleurs c, colorer co
+		WHERE v.ID_VOITURE=co.ID_VOITURE
+		AND co.ID_COULEUR=c.ID_COULEUR
+		AND COULEUR="noir"
+		)
+
+f. Lister les véhicules Essence et dont l’origine est allemande
+
+	SELECT DISTINCT IMMAT
+	FROM vehicule v, marque ma, origine o ,modele mo,motorisation mot
+	WHERE 	v.ID_MODELE=mo.ID_MODELE
+	AND mo.ID_MARQUE=ma.ID_MARQUE
+	AND ma.ID_ORIGINE=o.ID_ORIGINE
+	AND v.ID_MOTEUR=mot.ID_MOTEUR
+	AND NOM_PAYS="Allemagne"
+	AND IMMAT IN(
+		SELECT   IMMAT
+		FROM vehicule v, marque ma, origine o ,modele mo,motorisation mot
+		WHERE 	v.ID_MODELE=mo.ID_MODELE
+		AND mo.ID_MARQUE=ma.ID_MARQUE
+		AND ma.ID_ORIGINE=o.ID_ORIGINE
+		AND v.ID_MOTEUR=mot.ID_MOTEUR
+		AND TYPE_MOTEUR="Electrique"
+		)
+	
