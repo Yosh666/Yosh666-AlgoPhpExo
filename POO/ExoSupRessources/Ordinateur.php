@@ -7,9 +7,10 @@ Class Ordinateur{
     private $_cpuClock;
     private $_statut=0;
     private $_hdd;
-    private $test;
+    private static $_nbPostes=0;//attribut statique 
+    
 
-    const HDD_SMALL="250Go";
+    const HDD_SMALL="256Go";
     const HDD_MEDIUM="500Go";
     const HDD_BIG="1To";
 
@@ -19,9 +20,10 @@ Class Ordinateur{
      * @param string $marque de l'ordinateur
      *@param  $cpuClock vitesse de l'ordi
      */
-    public function __construct($marque,$cpuClock){
-        $this->_marque=$marque;
-        $this->_cpuClock=$cpuClock;
+    public function __construct($data){
+        $this->_marque=$data[0];
+        $this->_cpuClock=$data[1];
+        self::$_nbPostes++;//incrémentation du compteur
     }     
     
 
@@ -30,6 +32,13 @@ Class Ordinateur{
     }
     public function getCpuClock(){
         return $this->_cpuClock;
+    }
+    /**
+     * Get the value of _statut
+     */ 
+    public function getStatut()
+    {
+        return $this->_statut;
     }
     public function getHdd(){
         return $this->_hdd;
@@ -50,6 +59,9 @@ Class Ordinateur{
         }
         
     }
+    public static function combienPoste(){//méthode statique il faut le préciser dans la fction
+        echo "Il y a ".self::$_nbPostes." postes<br>";
+    }
 
 
     public function allumer(){
@@ -64,4 +76,6 @@ Class Ordinateur{
 
 
 
+
+    
 }
