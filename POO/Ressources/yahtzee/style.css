@@ -1,0 +1,31 @@
+#plateau{
+    display: flex;
+    flex-wrap:wrap;
+}
+.dice-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dice{
+    border-radius: 0.7em;
+    width: 4em;
+    height: 4em;
+    line-height: 4em;
+    text-align: center;
+    border: 2px solid black;
+    background-color: red;
+    margin: 0.5em;
+    cursor: pointer;
+}
+.dice:hover{
+    background-color: pink;
+}
+.dice img{
+    object-fit: cover;
+    width: 100%;
+}
+
+.dice.blocked{
+    background-color: green;
+}

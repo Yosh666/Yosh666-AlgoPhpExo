@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    
+    <div id="plateau">
+        <div class="dice-container">
+            <div class='dice'>
+                <img src=''>
+            </div>
+        </div>
+        <div class="dice-container">
+            <div class='dice'>
+                <img src=''>
+            </div>
+            
+        </div>
+        <div class="dice-container">
+            <div class='dice'>
+                <img src=''>
+            </div>
+            
+        </div>
+        <div class="dice-container">
+            <div class='dice'>
+                <img src=''>
+            </div>
+            
+        </div>
+        <div class="dice-container">
+            <div class='dice'>
+                <img src=''>
+            </div>
+           
+        </div>
+       
+    </div>
+    <div id="controls">
+        <button id="roll">Lancer</button>
+        <button id="stop">Stop</button>
+        <button id="makeScore">Attribuer le score</button>
+    </div>
+    
+    <div id="score"></div>
+    
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script>
+        
+        let nbLancer = 0
+        
+        function randomDiceValue(){
+
+            let nbAlea = Math.floor(((Math.random()*10)%6)+1)
+            
+            return nbAlea
+        }
+        
+        function endTurn(){
+            $("#roll").hide()
+            $("#stop").hide()
+            $("#makeScore").show()
+        }
+        
+        $(document).ready(function(){
+            $("#plateau .dice").css("visibility", "hidden")
+            $("#makeScore").hide()
+        });
+ 
+        $("#roll").click(function(){
+        
+            nbLancer++
+            
+            $("#plateau .dice").css("visibility", "visible")
+            
+            $(".dice:not(.blocked) img").each(function(){
+            
+                let nbAlea = randomDiceValue()
+                
+                let pathImg = "./img/inverted-dice-"+nbAlea+".png";
+                
+                $(this).attr("src", pathImg)
+                $(this).data("nb", nbAlea)
+                
+            })
+            
+            if(nbLancer == 3){
+                endTurn()
+            }
+        })
+        
+        $(".dice").click(function(){
+            $(this).toggleClass("blocked")
+            
+            let somme = 0
+        
+            $(".dice.blocked img").each(function(){
+                somme+= $(this).data("nb")
+            })
+            
+            $("#plateau").data("score", somme)
+        })
+        
+        $("#stop").click(function(){
+            endTurn()
+        })
+        
+        $("#makeScore").click(function(){
+            $("#score").html($("#plateau").data("score"))
+           
+        })
+        
+        
+
+    </script>
+</body>
+</html>
